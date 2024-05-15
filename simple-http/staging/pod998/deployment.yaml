@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-http
+spec:
+  selector:
+    matchLabels:
+      app: simple-http
+  template:
+    metadata:
+      labels:
+        app: simple-http
+    spec:
+      containers:
+        - name: simple-http
+          image: httpd
+          resources:
+            limits:
+              memory: 128M
+              cpu: 1000m
+          ports:
+            - name: http
+              containerPort: 80
