@@ -2,7 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simple-http
+  labels:
+    foo: bar
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: simple-http
@@ -14,6 +17,9 @@ spec:
       containers:
         - name: simple-http
           image: httpd
+          envFrom:
+            - configMapRef:
+                name: simple-http
           resources:
             limits:
               memory: 128M
