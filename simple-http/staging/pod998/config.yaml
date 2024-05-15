@@ -4,3 +4,4 @@ metadata:
   name: simple-http
 data:
   URL: https://www.google.com
+  USER: steve
