@@ -5,7 +5,7 @@ metadata:
   labels:
     foo: bar
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: simple-http
@@ -27,7 +27,7 @@ spec:
               memory: 128M
               cpu: 1000m
           startupProbe:
-            initialDelaySeconds: 7
+            initialDelaySeconds: 2
             httpGet:
               path: /
               port: http
