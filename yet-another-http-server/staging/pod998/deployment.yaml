@@ -28,6 +28,11 @@ spec:
             limits:
               memory: 128M
               cpu: 1000m
+          startupProbe:
+            initialDelaySeconds: 5
+            httpGet:
+              path: /
+              port: http
           ports:
             - name: http
               containerPort: 80

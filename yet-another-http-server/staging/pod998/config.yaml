@@ -7,3 +7,4 @@ metadata:
 data:
   URL: https://www.google.com
   USER: steve
+  TESTING_FUN: "true"
