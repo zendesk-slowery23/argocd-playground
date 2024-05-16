@@ -6,6 +6,7 @@ metadata:
     foo: bar
 spec:
   replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: simple-http
@@ -15,7 +16,6 @@ spec:
         app: simple-http
         sidecar.istio.io/inject: "true"
     spec:
-      revisionHistoryLimit: 1
       containers:
         - name: simple-http
           image: httpd
