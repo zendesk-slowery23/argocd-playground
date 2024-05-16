@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: simple-http
+        sidecar.istio.io/inject: "true"
     spec:
       revisionHistoryLimit: 0
       containers:
