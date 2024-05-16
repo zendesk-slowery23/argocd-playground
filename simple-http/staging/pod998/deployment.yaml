@@ -15,7 +15,7 @@ spec:
         app: simple-http
         sidecar.istio.io/inject: "true"
     spec:
-      revisionHistoryLimit: 0
+      revisionHistoryLimit: 1
       containers:
         - name: simple-http
           image: httpd
