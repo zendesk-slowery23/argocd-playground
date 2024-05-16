@@ -1,0 +1,209 @@
+apiVersion: v1
+kind: PodTemplate
+metadata:
+  annotations:
+    ad.datadoghq.com/tags: '{"git.commit.sha":"d85f0ce4f0185f4971afecf68dc7318f4ea128ca","git.repository_url":"github.com/zendesk/zendesk","team":"classic-core"}'
+    cicd-toolkit.zende.sk/environment: staging
+    cicd-toolkit.zende.sk/generated-by: jsonnet-kubernetes
+    cicd-toolkit.zende.sk/partition: pod998
+    cicd-toolkit.zende.sk/phase: phase0
+    cicd-toolkit.zende.sk/role: ric
+    cicd-toolkit.zende.sk/version: v8.428.0
+    sidecar.istio.io/inject: "true"
+    sidecar.istio.io/proxyCPU: 300m
+    sidecar.istio.io/proxyCPULimit: "4"
+    sidecar.istio.io/proxyMemory: 480Mi
+    sidecar.istio.io/proxyMemoryLimit: 2Gi
+    strategy.spinnaker.io/replace: "true"
+  labels:
+    app.kubernetes.io/component: ric
+    app.kubernetes.io/instance: ric
+    app.kubernetes.io/name: classic-ric
+    app.kubernetes.io/part-of: support
+    app.kubernetes.io/version: zenspider-70-999-d85f0ce4
+    branch: unknown
+    cicd-toolkit.zende.sk/pipeline: ${ execution.name }
+    criticality-tier: tier0
+    deploy_id: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    product: support
+    project: classic
+    ric-template-name: classic-console
+    role: ric
+    service.istio.io/canonical-name: classic-ric
+    sidecar.istio.io/inject: "true"
+    tags.datadoghq.com/env: staging
+    tags.datadoghq.com/istio-proxy.env: staging
+    tags.datadoghq.com/istio-proxy.service: classic-ric
+    tags.datadoghq.com/istio-proxy.version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    tags.datadoghq.com/service: classic-ric
+    tags.datadoghq.com/version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    team: classic-core
+    track: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+  name: classic-ric
+  namespace: classic
+template:
+  metadata:
+    annotations:
+      ad.datadoghq.com/tags: '{"git.commit.sha":"d85f0ce4f0185f4971afecf68dc7318f4ea128ca","git.repository_url":"github.com/zendesk/zendesk","team":"classic-core"}'
+      cicd-toolkit.zende.sk/generated-by: jsonnet-kubernetes
+      proxy.istio.io/config: |-
+        proxyMetadata:
+          DD_ENV: "staging"
+          DD_SERVICE: "classic-ric"
+          DD_VERSION: "d85f0ce4f0185f4971afecf68dc7318f4ea128ca"
+        terminationDrainDuration: 35s
+        concurrency: 2
+      sidecar.istio.io/inject: "true"
+      sidecar.istio.io/logLevel: warning
+      sidecar.istio.io/proxyCPU: 300m
+      sidecar.istio.io/proxyCPULimit: "4"
+      sidecar.istio.io/proxyMemory: 480Mi
+      sidecar.istio.io/proxyMemoryLimit: 2Gi
+      storage.zende.sk/credential-routes: '{"mount": "/tempauth_secrets"}'
+      storage.zende.sk/tempauth-no-sidecar: "true"
+      temp-auth.zendesk.com/kafka-tls: "true"
+      traffic.sidecar.istio.io/excludeOutboundIPRanges: 172.29.9.251/32
+      traffic.sidecar.istio.io/includeOutboundIPRanges: 10.0.0.0/8,172.16.0.0/12,240.240.0.0/16
+    labels:
+      app.kubernetes.io/component: ric
+      app.kubernetes.io/instance: ric
+      app.kubernetes.io/name: classic-ric
+      app.kubernetes.io/part-of: support
+      app.kubernetes.io/version: zenspider-70-999-d85f0ce4
+      branch: unknown
+      cicd-toolkit.zende.sk/pipeline: ${ execution.name }
+      configuration-delivery: "true"
+      criticality-tier: tier0
+      deploy_group: pod998
+      deploy_id: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      deploy_phase: phase0
+      product: support
+      project: classic
+      revision: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      role: ric
+      secret-service.zende.sk/sidecar: sidecar
+      service.istio.io/canonical-name: classic-ric
+      sidecar.istio.io/inject: "true"
+      tag: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      tags.datadoghq.com/env: staging
+      tags.datadoghq.com/istio-proxy.env: staging
+      tags.datadoghq.com/istio-proxy.service: classic-ric
+      tags.datadoghq.com/istio-proxy.version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      tags.datadoghq.com/service: classic-ric
+      tags.datadoghq.com/version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      team: classic-core
+      temp-auth: enabled
+      track: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+  spec:
+    containers:
+    - args:
+      - /bin/bash
+      env:
+      - name: DD_ENV
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.labels['tags.datadoghq.com/env']
+      - name: DD_SERVICE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.labels['tags.datadoghq.com/service']
+      - name: DD_VERSION
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.labels['tags.datadoghq.com/version']
+      - name: DEPLOY_ID
+        value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      - name: ENABLE_VECTOR_LOGGING
+        value: "false"
+      - name: POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+      - name: POD_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      - name: POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: PROJECT
+        value: classic
+      - name: PROXYSQL_ACCOUNT_MASTER_ENABLED
+        value: ""
+      - name: PROXYSQL_SHARD_MASTER_ENABLED
+        value: ""
+      - name: REVISION
+        value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      - name: ROLE
+        value: ric
+      - name: TAG
+        value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      - name: ISTIO_STATUS
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.annotations['sidecar.istio.io/status']
+      - name: VERSION
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.labels['app.kubernetes.io/version']
+      - name: BUNDLE_GEMFILE
+        value: Gemfile.next
+      envFrom:
+      - configMapRef:
+          name: classic-env-d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+      image: 713408432298.dkr.ecr.us-west-2.amazonaws.com/dev/zendesk/zendesk/ric@sha256:2f4577a1cd124559cf2dd60c447572f34d1df9405d28001654267949f59e7a96
+      name: console
+      resources:
+        limits:
+          cpu: "2.0"
+          memory: 4Gi
+        requests:
+          cpu: "1.0"
+          memory: 1Gi
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+      volumeMounts:
+      - mountPath: /var/run/datadog
+        name: dsdsocket
+        readOnly: true
+      - mountPath: /app/config/networks.d
+        name: network-config
+      - mountPath: /app/config/radar.d
+        name: radar
+      - mountPath: /app/config/attachments.d
+        name: attachments
+      - mountPath: /tmp
+        name: tmp
+    dnsConfig:
+      options:
+      - name: single-request-reopen
+      - name: ndots
+        value: "2"
+    initContainers: []
+    nodeSelector:
+      node-type: node-arm
+    priorityClassName: tier0
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: compute.zende.sk/nodegroup
+      value: node-arm
+    volumes:
+    - hostPath:
+        path: /var/run/datadog
+      name: dsdsocket
+    - configMap:
+        name: networks
+      name: network-config
+    - configMap:
+        name: radar
+      name: radar
+    - configMap:
+        name: attachments
+      name: attachments
+    - emptyDir: {}
+      name: tmp

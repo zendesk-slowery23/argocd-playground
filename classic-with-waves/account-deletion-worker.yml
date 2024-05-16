@@ -1,0 +1,432 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    ad.datadoghq.com/tags: '{"git.commit.sha":"d85f0ce4f0185f4971afecf68dc7318f4ea128ca","git.repository_url":"github.com/zendesk/zendesk","team":"classic-core"}'
+    cicd-toolkit.zende.sk/environment: staging
+    cicd-toolkit.zende.sk/generated-by: jsonnet-kubernetes
+    cicd-toolkit.zende.sk/partition: pod998
+    cicd-toolkit.zende.sk/phase: phase0
+    cicd-toolkit.zende.sk/role: account-deletion-worker
+    cicd-toolkit.zende.sk/version: v8.428.0
+    moniker.spinnaker.io/cluster: pod998
+    moniker.spinnaker.io/detail: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    moniker.spinnaker.io/stack: classic-account-deletion-worker
+    sidecar.istio.io/inject: "true"
+    sidecar.istio.io/proxyCPU: 60m
+    sidecar.istio.io/proxyCPULimit: "4"
+    sidecar.istio.io/proxyMemory: 110Mi
+    sidecar.istio.io/proxyMemoryLimit: 2Gi
+    strategy.spinnaker.io/replace: "true"
+  labels:
+    app.kubernetes.io/component: account-deletion-worker
+    app.kubernetes.io/instance: account-deletion-worker
+    app.kubernetes.io/name: classic-account-deletion-worker
+    app.kubernetes.io/part-of: support
+    app.kubernetes.io/version: zenspider-70-999-d85f0ce4
+    branch: unknown
+    cicd-toolkit.zende.sk/pipeline: ${ execution.name }
+    criticality-tier: tier0
+    deploy_id: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    product: support
+    project: classic
+    role: account-deletion-worker
+    role_group: resque-worker
+    service.istio.io/canonical-name: classic-account-deletion-worker
+    sidecar.istio.io/inject: "true"
+    tags.datadoghq.com/env: staging
+    tags.datadoghq.com/istio-proxy.env: staging
+    tags.datadoghq.com/istio-proxy.service: classic-account-deletion-worker
+    tags.datadoghq.com/istio-proxy.version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    tags.datadoghq.com/service: classic-account-deletion-worker
+    tags.datadoghq.com/version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    team: classic-core
+    track: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+  name: classic-account-deletion-worker
+  namespace: classic
+spec:
+  minReadySeconds: 10
+  progressDeadlineSeconds: 600
+  replicas: 10
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      project: classic
+      role: account-deletion-worker
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 30%
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/tags: '{"git.commit.sha":"d85f0ce4f0185f4971afecf68dc7318f4ea128ca","git.repository_url":"github.com/zendesk/zendesk","team":"classic-core"}'
+        cicd-toolkit.zende.sk/generated-by: jsonnet-kubernetes
+        moniker.spinnaker.io/cluster: pod998
+        moniker.spinnaker.io/detail: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        moniker.spinnaker.io/stack: classic-account-deletion-worker
+        proxy.istio.io/config: |-
+          proxyMetadata:
+            DD_ENV: "staging"
+            DD_SERVICE: "classic-account-deletion-worker"
+            DD_VERSION: "d85f0ce4f0185f4971afecf68dc7318f4ea128ca"
+          terminationDrainDuration: 125s
+          concurrency: 2
+        sidecar.istio.io/inject: "true"
+        sidecar.istio.io/logLevel: warning
+        sidecar.istio.io/proxyCPU: 60m
+        sidecar.istio.io/proxyCPULimit: "4"
+        sidecar.istio.io/proxyMemory: 110Mi
+        sidecar.istio.io/proxyMemoryLimit: 2Gi
+        storage.zende.sk/credential-routes: '{"mount": "/tempauth_secrets"}'
+        temp-auth.zendesk.com/kafka-tls: "true"
+        traffic.sidecar.istio.io/excludeOutboundIPRanges: 172.29.9.251/32
+        traffic.sidecar.istio.io/includeOutboundIPRanges: 10.0.0.0/8,172.16.0.0/12,240.240.0.0/16
+      labels:
+        app.kubernetes.io/component: account-deletion-worker
+        app.kubernetes.io/instance: account-deletion-worker
+        app.kubernetes.io/name: classic-account-deletion-worker
+        app.kubernetes.io/part-of: support
+        app.kubernetes.io/version: zenspider-70-999-d85f0ce4
+        branch: unknown
+        cicd-toolkit.zende.sk/pipeline: ${ execution.name }
+        configuration-delivery: "true"
+        criticality-tier: tier0
+        deploy_group: pod998
+        deploy_id: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        deploy_phase: phase0
+        product: support
+        project: classic
+        revision: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        role: account-deletion-worker
+        role_group: resque-worker
+        secret-service.zende.sk/sidecar: sidecar
+        service.istio.io/canonical-name: classic-account-deletion-worker
+        sidecar.istio.io/inject: "true"
+        tag: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        tags.datadoghq.com/env: staging
+        tags.datadoghq.com/istio-proxy.env: staging
+        tags.datadoghq.com/istio-proxy.service: classic-account-deletion-worker
+        tags.datadoghq.com/istio-proxy.version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        tags.datadoghq.com/service: classic-account-deletion-worker
+        tags.datadoghq.com/version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        team: classic-core
+        temp-auth: enabled
+        track: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    spec:
+      containers:
+      - args:
+        - bin/resque-pool
+        command:
+        - script/docker-boot
+        env:
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
+        - name: DD_VERSION
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/version']
+        - name: DEPLOY_ID
+          value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        - name: KRAGLE_LOG_LEVEL
+          value: warn
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: PROJECT
+          value: classic
+        - name: REVISION
+          value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        - name: ROLE
+          value: account-deletion-worker
+        - name: TAG
+          value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        - name: GRACEFUL_TERM
+          value: "true"
+        - name: PIDFILE
+          value: /app/resque.pid
+        - name: QUEUE
+          value: account_deletion
+        - name: MYSQL_READ_TIMEOUT
+          value: "300"
+        - name: ISTIO_STATUS
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.annotations['sidecar.istio.io/status']
+        - name: VERSION
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['app.kubernetes.io/version']
+        - name: BUNDLE_GEMFILE
+          value: Gemfile.next
+        envFrom:
+        - configMapRef:
+            name: classic-env-d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        image: 713408432298.dkr.ecr.us-west-2.amazonaws.com/dev/zendesk/zendesk/app@sha256:11b691cdc24ac51cf2036140f9b69e3e8c3ee59d19114e7805142de5d8c28ab4
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - script/kubernetes_resque_prestop
+        livenessProbe:
+          exec:
+            command:
+            - script/kubernetes_resque_liveness
+          failureThreshold: 1
+          initialDelaySeconds: 600
+          periodSeconds: 600
+          successThreshold: 1
+          timeoutSeconds: 30
+        name: classic-account-deletion-worker
+        resources:
+          limits:
+            cpu: "6.0"
+            memory: 12G
+          requests:
+            cpu: "0.5"
+            memory: 5G
+        startupProbe:
+          exec:
+            command:
+            - test
+            - -f
+            - /app/resque.pid
+          failureThreshold: 24
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 2
+        volumeMounts:
+        - mountPath: /var/run/datadog
+          name: dsdsocket
+          readOnly: true
+        - mountPath: /app/config/networks.d
+          name: network-config
+        - mountPath: /app/config/radar.d
+          name: radar
+        - mountPath: /app/config/attachments.d
+          name: attachments
+        - mountPath: /tmp
+          name: tmp
+      dnsConfig:
+        options:
+        - name: single-request-reopen
+        - name: ndots
+          value: "2"
+      initContainers:
+      - command:
+        - script/classic-init-container.sh
+        env:
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
+        - name: DD_VERSION
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/version']
+        - name: DEPLOY_ID
+          value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        - name: KRAGLE_LOG_LEVEL
+          value: warn
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: PROJECT
+          value: classic
+        - name: REVISION
+          value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        - name: ROLE
+          value: account-deletion-worker
+        - name: TAG
+          value: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+        image: 713408432298.dkr.ecr.us-west-2.amazonaws.com/dev/zendesk/zendesk/app@sha256:11b691cdc24ac51cf2036140f9b69e3e8c3ee59d19114e7805142de5d8c28ab4
+        name: classic-init
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi
+          requests:
+            cpu: 100m
+            memory: 50Mi
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
+          runAsGroup: 0
+          runAsUser: 0
+        volumeMounts:
+        - mountPath: /app/config/networks.d
+          name: network-config
+        - mountPath: /app/config/radar.d
+          name: radar
+        - mountPath: /app/config/attachments.d
+          name: attachments
+        - mountPath: /tmp
+          name: tmp
+      nodeSelector:
+        node-type: node-arm
+      priorityClassName: tier0
+      terminationGracePeriodSeconds: 120
+      tolerations:
+      - effect: NoSchedule
+        key: compute.zende.sk/nodegroup
+        value: node-arm
+      volumes:
+      - hostPath:
+          path: /var/run/datadog
+        name: dsdsocket
+      - configMap:
+          name: networks
+        name: network-config
+      - configMap:
+          name: radar
+        name: radar
+      - configMap:
+          name: attachments
+        name: attachments
+      - emptyDir: {}
+        name: tmp
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+    ad.datadoghq.com/tags: '{"git.commit.sha":"d85f0ce4f0185f4971afecf68dc7318f4ea128ca","git.repository_url":"github.com/zendesk/zendesk","team":"classic-core"}'
+    cicd-toolkit.zende.sk/environment: staging
+    cicd-toolkit.zende.sk/generated-by: jsonnet-kubernetes
+    cicd-toolkit.zende.sk/partition: pod998
+    cicd-toolkit.zende.sk/phase: phase0
+    cicd-toolkit.zende.sk/role: account-deletion-worker
+    cicd-toolkit.zende.sk/version: v8.428.0
+  labels:
+    app.kubernetes.io/component: account-deletion-worker
+    app.kubernetes.io/instance: account-deletion-worker
+    app.kubernetes.io/name: classic-account-deletion-worker
+    app.kubernetes.io/part-of: support
+    app.kubernetes.io/version: zenspider-70-999-d85f0ce4
+    branch: unknown
+    cicd-toolkit.zende.sk/pipeline: ${ execution.name }
+    criticality-tier: tier0
+    deploy_id: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    product: support
+    project: classic
+    role: account-deletion-worker
+    role_group: resque-worker
+    tags.datadoghq.com/env: staging
+    tags.datadoghq.com/service: classic-account-deletion-worker
+    tags.datadoghq.com/version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    team: classic-core
+    track: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+  name: classic-account-deletion-worker
+  namespace: classic
+spec:
+  behavior:
+    scaleDown:
+      policies:
+      - periodSeconds: 120
+        type: Pods
+        value: 5
+      stabilizationWindowSeconds: 600
+    scaleUp:
+      policies:
+      - periodSeconds: 180
+        type: Pods
+        value: 5
+      stabilizationWindowSeconds: 300
+  maxReplicas: 30
+  metrics:
+  - external:
+      metric:
+        name: resque.workers.working_pct
+        selector:
+          matchLabels:
+            kube_cluster: pod998
+            kube_namespace: classic
+            kube_project: classic
+            queue: account_deletion
+      target:
+        type: Value
+        value: "70"
+    type: External
+  minReplicas: 10
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: classic-account-deletion-worker
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  annotations:
+    cicd-toolkit.zende.sk/environment: staging
+    cicd-toolkit.zende.sk/generated-by: jsonnet-kubernetes
+    cicd-toolkit.zende.sk/partition: pod998
+    cicd-toolkit.zende.sk/phase: phase0
+    cicd-toolkit.zende.sk/role: account-deletion-worker
+    cicd-toolkit.zende.sk/version: v8.428.0
+  labels:
+    app.kubernetes.io/component: account-deletion-worker
+    app.kubernetes.io/instance: account-deletion-worker
+    app.kubernetes.io/name: classic-account-deletion-worker
+    app.kubernetes.io/part-of: support
+    app.kubernetes.io/version: zenspider-70-999-d85f0ce4
+    branch: unknown
+    cicd-toolkit.zende.sk/pipeline: ${ execution.name }
+    criticality-tier: tier0
+    deploy_id: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    product: support
+    project: classic
+    role: account-deletion-worker
+    role_group: resque-worker
+    service.istio.io/canonical-name: classic-account-deletion-worker
+    sidecar.istio.io/inject: "true"
+    tags.datadoghq.com/env: staging
+    tags.datadoghq.com/istio-proxy.env: staging
+    tags.datadoghq.com/istio-proxy.service: classic-account-deletion-worker
+    tags.datadoghq.com/istio-proxy.version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    tags.datadoghq.com/service: classic-account-deletion-worker
+    tags.datadoghq.com/version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    team: squonk
+    track: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+    version: d85f0ce4f0185f4971afecf68dc7318f4ea128ca
+  name: classic-account-deletion-worker
+  namespace: classic
+spec:
+  maxUnavailable: 20%
+  selector:
+    matchLabels:
+      project: classic
+      role: account-deletion-worker
+  unhealthyPodEvictionPolicy: AlwaysAllow
