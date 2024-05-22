@@ -7,19 +7,18 @@ metadata:
     app.kubernetes.io/component: api-server
     app.kubernetes.io/managed-by: argocd
 spec:
-  replicas: 2
+  replicas: 3
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      app: simple-http
+      app.kubernetes.io/name: simple-http
   template:
     metadata:
       labels:
-        app: simple-http
         app.kubernetes.io/name: simple-http
         app.kubernetes.io/component: api-server
         app.kubernetes.io/managed-by: argocd
-        sidecar.istio.io/inject: "false"
+        sidecar.istio.io/inject: "true"
     spec:
       containers:
         - name: simple-http
@@ -34,7 +33,7 @@ spec:
               memory: 128M
               cpu: "1"
           startupProbe:
-            initialDelaySeconds: 4
+            initialDelaySeconds: 10
             failureThreshold: 2
             timeoutSeconds: 5
             httpGet:
