@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: simple-http
-          image: httpd
+          image: httpd:2.4.59
           envFrom:
             - configMapRef:
                 name: simple-http
