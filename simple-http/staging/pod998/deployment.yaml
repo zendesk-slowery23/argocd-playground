@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/component: api-server
     app.kubernetes.io/managed-by: argocd
 spec:
-  replicas: 4
+  replicas: 5
   revisionHistoryLimit: 0
   selector:
     matchLabels:
@@ -30,7 +30,7 @@ spec:
                 name: simple-http
           resources:
             limits:
-              memory: 128M
+              memory: 32M
               cpu: "1"
           startupProbe:
             initialDelaySeconds: 10
