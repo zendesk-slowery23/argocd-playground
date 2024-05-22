@@ -6,8 +6,8 @@ metadata:
     foo: bar
     app.kubernetes.io/name: simple-http
 spec:
-  replicas: 1
-  revisionHistoryLimit: 1
+  replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: simple-http
@@ -16,6 +16,7 @@ spec:
       labels:
         app: simple-http
         app.kubernetes.io/name: simple-http
+        app.kubernetes.io/component: api-server
         sidecar.istio.io/inject: "false"
     spec:
       containers:
