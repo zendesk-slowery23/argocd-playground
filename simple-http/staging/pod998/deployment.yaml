@@ -39,8 +39,10 @@ spec:
               port: http
           lifecycle:
             preStop:
-              sleep:
-                seconds: 10
+              exec:
+                command:
+                  - sleep
+                  - "10"
           ports:
             - name: http
               containerPort: 80
