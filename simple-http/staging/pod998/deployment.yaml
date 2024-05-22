@@ -38,9 +38,9 @@ spec:
               command:
                 - sleep
                 - "60"
-            httpGet:
-              path: /
-              port: http
+            # httpGet:
+            #   path: /
+            #   port: http
           ports:
             - name: http
               containerPort: 80
