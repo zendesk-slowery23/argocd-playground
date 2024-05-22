@@ -34,15 +34,13 @@ spec:
               cpu: "1"
           startupProbe:
             initialDelaySeconds: 10
-            failureThreshold: 2
-            timeoutSeconds: 5
             httpGet:
               path: /
               port: http
           lifecycle:
             preStop:
               sleep:
-                seconds: 15
+                seconds: 10
           ports:
             - name: http
               containerPort: 80
