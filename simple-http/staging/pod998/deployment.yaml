@@ -32,6 +32,12 @@ spec:
               cpu: 1000m
           startupProbe:
             initialDelaySeconds: 4
+            failureThreshold: 2
+            timeoutSeconds: 5
+            exec:
+              command:
+                - sleep
+                - "60"
             httpGet:
               path: /
               port: http
