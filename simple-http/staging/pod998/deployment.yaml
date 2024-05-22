@@ -7,7 +7,6 @@ metadata:
     app.kubernetes.io/component: api-server
     app.kubernetes.io/managed-by: argocd
 spec:
-  replicas: 5
   revisionHistoryLimit: 0
   selector:
     matchLabels:
