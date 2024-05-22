@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   name: simple-http
   labels:
-    foo: bar
     app.kubernetes.io/name: simple-http
+    app.kubernetes.io/component: api-server
 spec:
   replicas: 2
   revisionHistoryLimit: 0
@@ -38,6 +38,10 @@ spec:
             httpGet:
               path: /
               port: http
+          lifecycle:
+            preStop:
+              sleep:
+                seconds: 15
           ports:
             - name: http
               containerPort: 80
